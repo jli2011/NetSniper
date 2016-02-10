@@ -1,2 +1,3 @@
 # NetSniper
-Monitors wireless networks and notifies administrators when a new device connects.
+
+This is a powershell application that monitors wireless networks and it's devices based on the MAC address. 
