@@ -1,3 +1,4 @@
+#Remove front hash tag to enable the following features:
 #getmac #prints out mac address and transport name of current system
 #arp -a #prints out all mac addresses
 #Clear-Content Desktop\test.txt #erase contents of a file
