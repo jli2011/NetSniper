@@ -1,0 +1,36 @@
+arp -a
+$macInput = Read-Host -Prompt 'Please enter the MAC Address you want to monitor (in 00-00-00-00-00-00 format)' #prompts user to input the mac address to monitor
+write-host " "
+write-host "You input the MAC address" $macInput #displays user input for user to double check
+
+$i = 1
+$checkNumber = 1
+
+while($i = 1)
+{
+    $macArray = arp -a #puts all mac addresses into array
+    write-host " "
+    write-host "There are" $macArray.Length "ARP entries" #prints out the length of macdata
+    $ipAddress = arp -a | select-string $macInput |% { $_.ToString().Trim().Split(" ")[0] } #gets the ip address from the MAC
+#-------------------------------------------------------------------------------------------------------------------------------------------
+    if ([string]::IsNullOrEmpty($ipAddress))#if MAC address is not found
+        {
+            write-host "IP address not found"
+            write-host "Online status = False"
+            write-host "Connection check number = 4 x" $checkNumber #each connection check is equal to 4 pings
+            write-host "Device Offline"
+            $checkNumber = $checkNumber + 1
+        }
+#-------------------------------------------------------------------------------------------------------------------------------------------
+     else #if MAC address is found
+        {
+            write-host "The ip address of this MAC address is" $ipAddress #prints the IP address from MAC address input
+            $status = Test-Connection $ipAddress -count 4 -quiet -ErrorAction Stop #ping the ip address 4 times while suppressing all errors
+            if ($status = "True") #if connection is successful
+                {
+                    write-host "Connection check number = 4 x" $checkNumber #each connection check is equal to 4 pings
+                    write-host "Device Online." #if ping successful
+                    $checkNumber = $checkNumber + 1
+                }
+        }
+}
