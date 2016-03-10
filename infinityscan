@@ -5,23 +5,37 @@ write-host "You input the MAC address" $macInput #displays user input for user t
 
 $i = 1
 $checkNumber = 1
+$before = 0
+$now = 0
 
 while($i = 1)
 {
+    $buttonNumber = 0
+    $before = $now
     $macArray = arp -a #puts all mac addresses into array
     write-host " "
     write-host "There are" $macArray.Length "ARP entries" #prints out the length of macdata
     $ipAddress = arp -a | select-string $macInput |% { $_.ToString().Trim().Split(" ")[0] } #gets the ip address from the MAC
-#-------------------------------------------------------------------------------------------------------------------------------------------
+
     if ([string]::IsNullOrEmpty($ipAddress))#if MAC address is not found
         {
             write-host "IP address not found"
             write-host "Online status = False"
-            write-host "Connection check number = 4 x" $checkNumber #each connection check is equal to 4 pings
-            write-host "Device Offline"
-            $checkNumber = $checkNumber + 1
+            $now = 0 #its now offline
+            if($before = 1) #if it was online
+                {
+                    #display dialog box
+                    $wshell = New-Object -ComObject Wscript.Shell
+                    $buttonNumber = $wshell.Popup("Device Offline!",0,"Device Status", 0x6) 
+                    write-host "Button number is" $buttonNumber
+                    
+                    if($buttonNumber = 2) #if user selects "Cancel", then stop program
+                        {
+                            Exit
+                        }
+                }
         }
-#-------------------------------------------------------------------------------------------------------------------------------------------
+
      else #if MAC address is found
         {
             write-host "The ip address of this MAC address is" $ipAddress #prints the IP address from MAC address input
@@ -31,6 +45,22 @@ while($i = 1)
                     write-host "Connection check number = 4 x" $checkNumber #each connection check is equal to 4 pings
                     write-host "Device Online." #if ping successful
                     $checkNumber = $checkNumber + 1
+                    $now = 1 #its now online
+                    
+                    if ($before = 0) #if it was offline before
+                        {
+                            #display dialog box
+                            write-host "3"
+                            $wshell = New-Object -ComObject Wscript.Shell
+                            $buttonNumber = $wshell.Popup("Device Online!",0,"Device Status", 0x6) 
+                            write-host "Device is offline"
+                            #write-host "Button number is" $buttonNumber #shows the button number selected
+                            
+                            if($buttonNumber = 2) #if user selects "Cancel", then stop program
+                                {
+                                    Exit
+                                }
+                        }
                 }
         }
 }
