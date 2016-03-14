@@ -28,7 +28,7 @@ while($i = 1)
                 {
                     #display dialog box
                     $wshell = New-Object -ComObject Wscript.Shell
-                    $buttonNumber = $wshell.Popup("Device just went Offline!",0,"Device Status", 0x1) 
+                    $buttonNumber = $wshell.Popup("Device just went Offline!",0,"Device Status", 0x0) 
                 }
 
         }
@@ -48,7 +48,7 @@ while($i = 1)
                         {
                             #display dialog box
                             $wshell = New-Object -ComObject Wscript.Shell
-                            $buttonNumber = $wshell.Popup("Device is now Online!",0,"Device Status", 0x1) 
+                            $buttonNumber = $wshell.Popup("Device is now Online!",0,"Device Status", 0x0) 
                         }
                 }
         }
