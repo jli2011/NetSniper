@@ -1,40 +1,57 @@
 arp -a
+write-host ""
 $macInput = Read-Host -Prompt 'Please enter the MAC Address you want to monitor (in 00-00-00-00-00-00 format)' #prompts user to input the mac address to monitor
-write-host " "
 write-host "You input the MAC address" $macInput #displays user input for user to double check
 
 $i = 1
 $checkNumber = 1
 $before = 2
 $now = 2
+$offlineCount = 0
 
 while($i = 1)
 {
     $buttonNumber = 0
     $before = $now
     $macArray = arp -a #puts all mac addresses into array
-    write-host " "
-    write-host "There are" $macArray.Length "ARP entries" #prints out the length of macdata
     $ipAddress = arp -a | select-string $macInput |% { $_.ToString().Trim().Split(" ")[0] } #gets the ip address from the MAC
-#-------------------------------------------------------------------------------------------------------------------------------------------
+
     if ([string]::IsNullOrEmpty($ipAddress))#if MAC address is not found
         {
-            write-host "IP address not found"
-            write-host "Connection check number = 4 x" $checkNumber #each connection check is equal to 4 pings
-            $checkNumber = $checkNumber + 1
-            write-host "Device is Offline"
-            $now = 0 #its now offline
-            if ($before -eq 1) #if it was online
+            if ($before -eq 0)
                 {
-                    #display dialog box
-                    $wshell = New-Object -ComObject Wscript.Shell
-                    $buttonNumber = $wshell.Popup("Device just went Offline!",0,"Device Status", 0x0) 
+                    $offlineCount = $offlineCount + 1
+                    $remainder = $offlineCount % 100
+                    if ($remainder -eq 0)
+                        {
+                            write-host "Device is still Offline. Attempts =" $offlineCount
+                        }
                 }
-
+            else
+                {
+                    write-host ""
+                    write-host "There are" $macArray.Length "ARP entries" #prints out the length of macdata
+                    write-host "IP address not found"
+                    write-host "Connection check number = 4 x" $checkNumber #each connection check is equal to 4 pings
+                    $checkNumber = $checkNumber + 1
+                    write-host "Device is Offline"
+                    write-host ""
+                    $now = 0 #its now offline
+                    if ($before -eq 1) #if it was online
+                        {
+                            #display dialog box
+                            $wshell = New-Object -ComObject Wscript.Shell
+                            $buttonNumber = $wshell.Popup("Device just went Offline! Select cancel to stop.",0,"Device Status", 0x1) 
+                            if($buttonNumber -eq 2)
+                                {Exit}
+                        }
+                }
         }
-#-------------------------------------------------------------------------------------------------------------------------------------------
+
     else #if MAC address is found
         {
+            write-host ""
+            write-host "There are" $macArray.Length "ARP entries" #prints out the length of macdata
             write-host "The ip address of this MAC address is" $ipAddress #prints the IP address from MAC address input
             $status = Test-Connection $ipAddress -count 4 -quiet -ErrorAction Stop #ping the ip address 4 times while suppressing all errors
             if ($status = "True") #if connection is successful
@@ -48,7 +65,9 @@ while($i = 1)
                         {
                             #display dialog box
                             $wshell = New-Object -ComObject Wscript.Shell
-                            $buttonNumber = $wshell.Popup("Device is now Online!",0,"Device Status", 0x0) 
+                            $buttonNumber = $wshell.Popup("Device is now Online! Select cancel to stop.",0,"Device Status", 0x1) 
+                            if($buttonNumber -eq 2)
+                                {Exit}
                         }
                 }
         }
