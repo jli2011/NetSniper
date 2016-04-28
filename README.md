@@ -15,6 +15,7 @@ REQUIREMENTS:
 This application works in both Powershell 2.0 and Linux Bash. One-time or Continuous scans are also available in the Powershell version. The Bash version incorporates both scans into one application. 
 
 INTRODUCTION VIDEO:
+
 https://www.youtube.com/watch?v=aos5ByDuaDY&feature=youtu.be
 
 
