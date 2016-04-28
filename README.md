@@ -1,9 +1,11 @@
 # NetSniper
 
 HELP WANTED: 
+
 It would be good to get the community's input on the features of this device. Comments and suggestions for improvement or additional features are greatly appreciated. 
 
-STATE OF APPLICATION: 
+**STATE OF APPLICATION:**
+
 Completed. 
 
 DESCRIPTION: 
