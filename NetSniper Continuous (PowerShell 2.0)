@@ -1,7 +1,9 @@
-arp -a
+arp -a #prints out all mac addresses
+
+#gets MAC from user
 write-host ""
-$macInput = Read-Host -Prompt 'Please enter the MAC Address you want to monitor (in 00-00-00-00-00-00 format)' #prompts user to input the mac address to monitor
-write-host "You input the MAC address" $macInput #displays user input for user to double check
+$macInput = Read-Host -Prompt 'Please enter the MAC Address you want to monitor (in 00-00-00-00-00-00 format)' 
+write-host "You input the MAC address" $macInput 
 
 $i = 1
 $checkNumber = 1
