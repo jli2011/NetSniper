@@ -1,19 +1,25 @@
 #!/bin/bash
- 
-arp -a
 
+#prints out all MAC addresses
+arp -a 
+
+#gets MAC from user
 echo " "
 echo "Please enter the MAC address you want to monitor (in 00:00:00:00:00:00 format):"
 read macInput
 
+#verifies the MAC address
 echo " "
 echo "You input the MAC address $macInput"
 
+#prints out IP from MAC
 echo -n "The IP address of this MAC is "
 arp -n | grep $macInput | awk '{print $1}'
 
+#puts IP into ipAddress variable
 ipAddress=$(arp -n | grep $macInput | awk '{print $1}')
 
+#gets user input for scan mode
 echo " "
 echo "Preparing to test connection..."
 echo "Would you like this test to be continuous? (0 for no / 1 for yes)"
@@ -22,6 +28,7 @@ read userInput
 echo "Starting test..."
 echo "[Press ctrl + C to Quit]"
 
+#one-time scan
 if [ $userInput -eq 0 ]; then
 	ping -c 1 $ipAddress
 	if [ $? -eq 0 ]; then
@@ -31,6 +38,7 @@ if [ $userInput -eq 0 ]; then
     fi
 fi
 
+#continuous scan
 while [ $userInput -eq 1 ]
 do
     sleep 5
