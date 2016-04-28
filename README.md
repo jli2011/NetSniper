@@ -14,6 +14,6 @@ Not every computers Ip address is permanent. Therefore, to always constantly sca
 REQUIREMENTS:   
 This application works in both Powershell 2.0 and Linux Bash. One-time or Continuous scans are also available in the Powershell version. The Bash version incorporates both scans into one application. 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/aos5ByDuaDY" frameborder="0" allowfullscreen></iframe>
+https://www.youtube.com/watch?v=aos5ByDuaDY&feature=youtu.be
 
 
