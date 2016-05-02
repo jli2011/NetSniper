@@ -22,4 +22,6 @@ This application works in both Powershell 2.0 and Linux Bash. One-time or Contin
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/aos5ByDuaDY" frameborder="0" allowfullscreen></iframe>
 
+[![Alt text for your video](http://img.youtube.com/vi/aos5ByDuaDY/0.jpg)](https://www.youtube.com/embed/aos5ByDuaDY)
+
 
