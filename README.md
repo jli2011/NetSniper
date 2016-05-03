@@ -20,7 +20,9 @@ This application works in both Powershell 2.0 and Linux Bash. One-time or Contin
 
 **INTRODUCTION VIDEO:**
 
-!![560x315](https://www.youtube.com/embed/aos5ByDuaDY)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aos5ByDuaDY" frameborder="0" allowfullscreen></iframe>
+
+!![560x315](https://www.youtube.com/watch?v=aos5ByDuaDY)
 
 [![Alt text for your video](http://img.youtube.com/vi/aos5ByDuaDY/0.jpg)](https://www.youtube.com/embed/aos5ByDuaDY)
 
