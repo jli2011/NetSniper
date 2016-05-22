@@ -1,9 +1,5 @@
 # NetSniper
 
-**HELP WANTED:** 
-
-It would be good to get the community's input on the features of this device. Comments and suggestions for improvement or additional features are greatly appreciated. 
-
 **STATE OF APPLICATION:**
 
 Completed. 
@@ -17,6 +13,10 @@ Not every computers Ip address is permanent. Therefore, to always constantly sca
 **REQUIREMENTS:**   
 
 This application works in both Powershell 2.0 and Linux Bash. One-time or Continuous scans are also available in the Powershell versions. The Bash version incorporates both scans into one application. 
+
+**COMMUNITY SUPPORT:** 
+
+It would be good to get the community's input on the features of this application. Comments and suggestions for improvement or additional features are greatly appreciated. 
 
 **INTRODUCTION VIDEO:**
 
