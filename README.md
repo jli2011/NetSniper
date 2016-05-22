@@ -20,6 +20,6 @@ This application works in both Powershell 2.0 and Linux Bash. One-time or Contin
 
 **INTRODUCTION VIDEO:**
 
-[![Alt text for your video](http://img.youtube.com/vi/aos5ByDuaDY/0.jpg)](https://www.youtube.com/embed/aos5ByDuaDY)
+[![Alt text for your video](http://img.youtube.com/vi/Qs0wr3QkHLo/0.jpg)](https://www.youtube.com/embed/Qs0wr3QkHLo)
 
 
