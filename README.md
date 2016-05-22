@@ -11,6 +11,7 @@ This is a powershell application that monitors wireless networks and it's device
 Not every computers Ip address is permanent. Therefore, to always constantly scan the same IP address may not be the best way of detecting whether a device status. If the computers IP address is changed, then you'd be scanning the wrong system. However, a MAC Address is permanent. Powershell takes in a MAC Address input from user and finds the IP Address of the system using the MAC Address. For there, NetSniper will ping the IP Address and let the user know if the device is online or offline. 
 
 **POSTING:** 
+
 https://jiajieli.wordpress.com/2016/05/22/introducing-netsniper/
 
 **REQUIREMENTS:**   
