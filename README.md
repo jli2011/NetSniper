@@ -24,6 +24,6 @@ It would be good to get the community's input on the features of this applicatio
 
 **INTRODUCTION VIDEO:**
 
-[![Alt text for your video](http://img.youtube.com/vi/Qs0wr3QkHLo/0.jpg)](https://www.youtube.com/embed/Qs0wr3QkHLo)
+[![Alt text for your video](http://img.youtube.com/vi/0nh1atKnWp4/0.jpg)](https://www.youtube.com/embed/0nh1atKnWp4)
 
 
